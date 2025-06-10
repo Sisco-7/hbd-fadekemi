@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday Fadekemi! 🎉</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            touch-action: manipulation;
+        }
+
+        /* Cosmic Background */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(2px 2px at 160px 30px, #ddd, transparent);
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: sparkle 20s linear infinite;
+        }
+
+        @keyframes sparkle {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-200px); }
+        }
+
+        /* Cosmic Particles */
+        .cosmic-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: float-cosmic 6s ease-in-out infinite;
+        }
+
+        .particle.star {
+            background: radial-gradient(circle, #fff 0%, transparent 70%);
+            box-shadow: 0 0 6px #fff, 0 0 12px #fff, 0 0 18px #fff;
+        }
+
+        .particle.nebula {
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.8) 0%, transparent 70%);
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.6);
+        }
+
+        .particle.cosmic-dust {
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.9) 0%, transparent 70%);
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+        }
+
+        @keyframes float-cosmic {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
+            33% { transform: translateY(-30px) rotate(120deg); opacity: 1; }
+            66% { transform: translateY(-15px) rotate(240deg); opacity: 0.9; }
+        }
+
+        .container {
+            max-width: min(1400px, 95vw);
+            margin: 0 auto;
+            padding: min(20px, 4vw);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .main-title {
+            font-size: clamp(2rem, 7vw, 5rem);
+            font-weight: 800;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+            margin: clamp(20px, 4vh, 40px) 0;
+            animation: bounce 2s ease-in-out infinite, gradientShift 6s ease infinite;
+            letter-spacing: min(2px, 0.5vw);
+            line-height: 1.2;
+        }
+
+        .name-highlight {
+            font-size: clamp(1.8rem, 6vw, 4rem);
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #a8edea, #fed6e3);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: clamp(15px, 3vh, 25px) 0;
+            animation: gradientShift 4s ease infinite;
+            text-transform: uppercase;
+            letter-spacing: min(3px, 0.8vw);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-8px); }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .celebration-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: min(30px, 6vw);
+            padding: clamp(25px, 5vw, 50px);
+            margin: clamp(20px, 4vh, 40px) auto;
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            transform: translateY(0);
+            transition: all 0.4s ease;
+            max-width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .celebration-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .celebration-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 
+                0 30px 60px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+
+        .celebration-card:hover::before {
+            left: 100%;
+        }
+
+        .birthday-message {
+            font-size: clamp(1rem, 3vw, 1.4rem);
+            color: #fff;
+            line-height: 1.7;
+            margin-bottom: clamp(20px, 4vh, 30px);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-weight: 300;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .sparkles {
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            margin: clamp(15px, 3vh, 25px) 0;
+            animation: sparkle-rotate 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle-rotate {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 0.8; }
+        }
+
+        /* Enhanced Photo Frame */
+        .photo-frame {
+            width: clamp(180px, 35vw, 280px);
+            height: clamp(180px, 35vw, 280px);
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #a8edea, #fed6e3);
+            background-size: 400% 400%;
+            padding: min(8px, 1.5vw);
+            margin: clamp(25px, 5vh, 40px) auto;
+            position: relative;
+            animation: rotate-glow 15s linear infinite, gradientShift 8s ease infinite;
+            box-shadow: 
+                0 0 30px rgba(255, 255, 255, 0.3),
+                0 0 60px rgba(255, 255, 255, 0.1),
+                0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        @keyframes rotate-glow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .birthday-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .birthday-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: clamp(0.8rem, 2.5vw, 1.2rem);
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            padding: min(20px, 4vw);
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .wishes-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 90vw), 1fr));
+            gap: clamp(15px, 4vw, 25px);
+            margin: clamp(30px, 6vh, 50px) 0;
+            padding: 0;
+        }
+
+        .wish-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: clamp(20px, 4vw, 35px);
+            border-radius: min(20px, 4vw);
+            box-shadow: 
+                0 15px 35px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wish-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #fff, transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .wish-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+
+        .wish-card h3 {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            margin-bottom: min(15px, 3vw);
+            font-weight: 600;
+        }
+
+        .wish-card p {
+            font-size: clamp(0.85rem, 2.5vw, 1rem);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .balloons {
+            position: fixed;
+            top: clamp(10px, 2vh, 20px);
+            left: clamp(10px, 2vw, 20px);
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            animation: float 4s ease-in-out infinite;
+            z-index: 100;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(3deg); }
+        }
+
+        .music-notes {
+            position: fixed;
+            font-size: clamp(1.3rem, 4vw, 2.2rem);
+            color: rgba(255, 255, 255, 0.9);
+            animation: musical 5s ease-in-out infinite;
+            z-index: 50;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+        }
+
+        @keyframes musical {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+            25% { transform: translateY(-30px) rotate(8deg); opacity: 1; }
+            75% { transform: translateY(-15px) rotate(-8deg); opacity: 1; }
+        }
+
+        .age-display {
+            font-size: clamp(3rem, 12vw, 8rem);
+            font-weight: 800;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f093fb);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: clamp(15px, 3vh, 25px) 0;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+            animation: gradientShift 4s ease infinite, pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .celebration-button {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            background-size: 200% 200%;
+            color: white;
+            padding: clamp(12px, 3vw, 16px) clamp(25px, 5vw, 40px);
+            border: none;
+            border-radius: 50px;
+            font-size: clamp(0.9rem, 2.8vw, 1.2rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin: clamp(15px, 3vh, 25px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: gradientShift 3s ease infinite;
+            text-transform: uppercase;
+            letter-spacing: min(1px, 0.2vw);
+            min-height: 44px; /* Touch target size */
+        }
+
+        .celebration-button:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        .celebration-button:active {
+            transform: scale(1.02) translateY(-1px);
+        }
+
+        /* Enhanced Mobile/Tablet Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                padding: min(15px, 3vw);
+            }
+            
+            .wishes-section {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 12px;
+            }
+            
+            .celebration-card {
+                margin: 15px 0;
+                border-radius: 20px;
+                padding: 20px;
+            }
+            
+            .wishes-section {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin: 25px 0;
+            }
+            
+            .balloons {
+                top: 8px;
+                left: 8px;
+            }
+            
+            .photo-frame {
+                width: min(200px, 50vw);
+                height: min(200px, 50vw);
+            }
+
+            .main-title {
+                margin: 15px 0;
+            }
+
+            .name-highlight {
+                margin: 12px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 8px;
+            }
+            
+            .celebration-card {
+                padding: 15px 12px;
+                margin: 12px 0;
+            }
+            
+            .photo-frame {
+                width: min(160px, 45vw);
+                height: min(160px, 45vw);
+                margin: 20px auto;
+            }
+            
+            .wishes-section {
+                margin: 20px 0;
+            }
+            
+            .wish-card {
+                padding: 15px 12px;
+            }
+
+            .birthday-message {
+                margin-bottom: 15px;
+            }
+
+            .music-notes {
+                display: none; /* Hide on very small screens to reduce clutter */
+            }
+        }
+
+        /* Very small screens (phones in portrait) */
+        @media (max-width: 360px) {
+            .container {
+                padding: 6px;
+            }
+            
+            .celebration-card {
+                padding: 12px 8px;
+            }
+            
+            .photo-frame {
+                width: min(140px, 40vw);
+                height: min(140px, 40vw);
+            }
+        }
+
+        /* Landscape orientation on mobile */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .main-title {
+                font-size: clamp(1.5rem, 6vw, 3rem);
+                margin: 10px 0;
+            }
+            
+            .name-highlight {
+                font-size: clamp(1.3rem, 5vw, 2.5rem);
+                margin: 8px 0;
+            }
+            
+            .photo-frame {
+                width: min(120px, 25vw);
+                height: min(120px, 25vw);
+                margin: 15px auto;
+            }
+            
+            .celebration-card {
+                padding: 15px;
+                margin: 10px 0;
+            }
+        }
+
+        /* Cosmic Effects Enhancements for Mobile */
+        @media (max-width: 768px) {
+            .particle {
+                animation-duration: 8s; /* Slower for better performance */
+            }
+            
+            .cosmic-bg {
+                animation-duration: 25s; /* Slower for mobile */
+            }
+        }
+
+        /* Shooting Stars - Mobile Optimized */
+        .shooting-star {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 6px #fff;
+            animation: shooting 3s linear infinite;
+            z-index: 5;
+        }
+
+        @keyframes shooting {
+            0% {
+                transform: translateX(-50px) translateY(-50px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100vw) translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Galaxy Swirl Effect */
+        .galaxy-swirl {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: 
+                radial-gradient(ellipse at 25% 25%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 75% 75%, rgba(30, 144, 255, 0.1) 0%, transparent 50%);
+            animation: galaxy-rotate 30s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes galaxy-rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Accessibility Improvements */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .celebration-card {
+                border: 2px solid white;
+                background: rgba(0, 0, 0, 0.8);
+            }
+            
+            .wish-card {
+                border: 2px solid white;
+                background: rgba(0, 0, 0, 0.9);
+            }
+        }
+
+        /* Cosmic Firework Stars */
+        .cosmic-star {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1001;
+            animation: star-fall 3s ease-out forwards;
+        }
+
+        @keyframes star-fall {
+            0% {
+                transform: translateY(-100px) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Cosmic Message */
+        .cosmic-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: white;
+            text-shadow: 0 0 30px rgba(255,255,255,0.8);
+            animation: bounce 2s ease-in-out;
+            z-index: 1002;
+            text-align: center;
+            padding: 15px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            max-width: 90vw;
+            line-height: 1.3;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-bg"></div>
+    <div class="galaxy-swirl"></div>
+    <div class="cosmic-particles" id="particles"></div>
+    
+    <div class="balloons">🎈🎈🎈</div>
+    <div class="music-notes" style="top: 10%; right: 5%;">🎵</div>
+    <div class="music-notes" style="top: 25%; right: 10%; animation-delay: -1s;">🎶</div>
+    <div class="music-notes" style="top: 45%; left: 5%; animation-delay: -2s;">🎵</div>
+    
+    <div class="container">
+        <h1 class="main-title">🎉 HAPPY BIRTHDAY! 🎉</h1>
+        <div class="name-highlight">FADEKEMI</div>
+        
+        <div class="celebration-card">
+            <div class="sparkles">✨ ⭐ 🌟 ⭐ ✨</div>
+            
+            <div class="photo-frame">
+                <img src="Fade.png" 
+                     alt="Beautiful Fadekemi" 
+                     class="birthday-image"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="photo-placeholder" style="display:none;">
+                    Add Fadekemi's Beautiful Photo Here! 📸✨
+                </div>
+            </div>
+            
+            <div class="age-display">🎂</div>
+            
+            <div class="birthday-message">
+                Today we celebrate the amazing FADEKEMI! 💫<br>
+                Another year of being absolutely incredible, spreading joy wherever you go, 
+                and being the most wonderful bestie anyone could ask for! 
+                <br><br>
+                You deserve all the happiness, love, and cosmic magic in the universe! 🌌✨
+            </div>
+            
+            <button class="celebration-button" onclick="createCosmicFireworks()">🚀 Launch Cosmic Surprise! 🚀</button>
+        </div>
+        
+        <div class="wishes-section">
+            <div class="wish-card">
+                <h3>🌟 May This Year Bring</h3>
+                <p>Endless adventures among the stars, beautiful cosmic memories, and all your dreams orbiting into reality. You shine brighter than any constellation, Fadekemi!</p>
+            </div>
+            
+            <div class="wish-card">
+                <h3>💫 Grateful For You</h3>
+                <p>Thank you for being the most loyal, funny, and caring friend in this galaxy. Life is infinitely better with you in it, dear Fadekemi!</p>
+            </div>
+            
+            <div class="wish-card">
+                <h3>🎊 Cosmic Celebration!</h3>
+                <p>Let's celebrate YOU across the universe today! Dance among the stars, laugh with the moon, and make this birthday absolutely astronomical!</p>
+            </div>
+        </div>
+        
+        <div class="celebration-card">
+            <div class="sparkles">🎈 🌟 🎁 🌟 🎈</div>
+            <div class="birthday-message">
+                <strong>From your bestie with infinite love,</strong><br>
+                <em>Sisco</em> 💜
+                <br><br>
+                Hope your special day is as magical as the cosmos itself, beautiful Fadekemi! 🌌
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create cosmic particles
+        function createCosmicParticles() {
+            const particleContainer = document.getElementById('particles');
+            const particleTypes = ['star', 'nebula', 'cosmic-dust'];
+            
+            // Clear existing particles
+            particleContainer.innerHTML = '';
+            
+            // Reduce particles on mobile for better performance
+            const particleCount = window.innerWidth < 768 ? 15 : 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = `particle ${particleTypes[Math.floor(Math.random() * particleTypes.length)]}`;
+                
+                const size = Math.random() * 4 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                
+                particleContainer.appendChild(particle);
+            }
+        }
+
+        // Create shooting stars
+        function createShootingStars() {
+            // Reduce shooting stars on mobile
+            const starCount = window.innerWidth < 768 ? 1 : 3;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'shooting-star';
+                star.style.top = Math.random() * 50 + '%';
+                star.style.left = '-10px';
+                star.style.animationDelay = Math.random() * 5 + 's';
+                
+                document.body.appendChild(star);
+                
+                setTimeout(() => {
+                    star.remove();
+                }, 8000);
+            }
+        }
+
+        // Create cosmic fireworks effect with stars instead of emojis
+        function createCosmicFireworks() {
+            const body = document.body;
+            
+            // Reduce fireworks on mobile
+            const fireworkCount = window.innerWidth < 768 ? 15 : 25;
+            
+            for (let i = 0; i < fireworkCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'cosmic-star';
+                
+                // Random star size
+                const size = Math.random() * 8 + 4;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                
+                // Random star position
+                star.style.left = Math.random() * window.innerWidth + 'px';
+                
+                // Random star color (white, gold, or purple)
+                const colors = ['#ffffff', '#FFD700', '#DA70D6'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Create gradient for the star
+                star.style.background = `radial-gradient(circle, ${color} 0%, transparent 70%)`;
+                star.style.boxShadow = `0 0 ${size}px ${color}`;
+                
+                // Random animation duration and delay
+                star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                star.style.animationDelay = (Math.random() * 0.5) + 's';
+                
+                body.appendChild(star);
+                
+                setTimeout(() => {
+                    star.remove();
+                }, 3000);
+            }
+            
+            // Cosmic message
+            const message = document.createElement('div');
+            message.className = 'cosmic-message';
+            message.textContent = 'HAPPY BIRTHDAY FADEKEMI!';
+            
+            body.appendChild(message);
+            
+            setTimeout(() => {
+                message.remove();
+            }, 2200);
+        }
+
+        // Initialize particles and shooting stars on load
+        window.addEventListener('DOMContentLoaded', () => {
+            createCosmicParticles();
+            createShootingStars();
+            
+            // Handle touch events for better mobile interaction
+            document.addEventListener('touchstart', function() {}, {passive: true});
+        });
+
+        // Recreate particles and shooting stars on resize for responsiveness
+        window.addEventListener('resize', () => {
+            createCosmicParticles();
+        });
+
+        // Optimize for mobile performance
+        window.addEventListener('load', function() {
+            // Reduce animations if on mobile
+            if (window.innerWidth < 768) {
+                const elements = document.querySelectorAll('*');
+                elements.forEach(el => {
+                    const style = window.getComputedStyle(el);
+                    if (style.animationName !== 'none') {
+                        el.style.animationDuration = (parseFloat(style.animationDuration) * 1.5) + 's';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
